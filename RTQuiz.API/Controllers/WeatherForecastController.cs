@@ -1,9 +1,11 @@
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RTQuiz.API.Controllers
 {
+    [ApiVersion(1)]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v{v:apiVersion}/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -18,6 +20,7 @@ namespace RTQuiz.API.Controllers
             _logger = logger;
         }
 
+        [MapToApiVersion(1)]
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
