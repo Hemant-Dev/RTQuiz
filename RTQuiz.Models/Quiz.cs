@@ -17,6 +17,11 @@ namespace RTQuiz.Models
         public IEnumerable<Question> Questions { get; set; }
         [Required]
         public TimeSpan Duration { get; set; }
+        [Required]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+        [Required]
+        public Difficulty Difficulty { get; set; }
 
     }
 }

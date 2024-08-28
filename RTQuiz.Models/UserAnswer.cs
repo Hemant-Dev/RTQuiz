@@ -8,21 +8,18 @@ using System.Threading.Tasks;
 
 namespace RTQuiz.Models
 {
-    public class Question
-    {
+    public class UserAnswer
+    { 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        public int QuizId { get; set; }
-        public Quiz Quiz { get; set; }
+        public int QuizAttemptId { get; set; }
+        public QuizAttempt QuizAttempt { get; set; }
         [Required]
-        [StringLength(200)]
-        public string Statement { get; set; }
-        [Required]
-        public IEnumerable<Answer> Answers { get; set; }
-
-        public TimeSpan TimeLimit { get; set; }
-
+        public int QuestionId { get; set; }
+        public Question Question { get; set; }
+        public int AnswerId { get; set; }
+        public Answer Answer { get; set; }
     }
 }

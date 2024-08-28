@@ -14,7 +14,6 @@ namespace RTQuiz.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        [ForeignKey(nameof(Question))]
         public int QuestionId { get; set; }
         public Question Question { get; set; }
         [Required]

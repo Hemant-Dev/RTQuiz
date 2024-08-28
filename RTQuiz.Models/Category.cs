@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace RTQuiz.Models
 {
-    public enum DifficultyLevel
+    public class Category
     {
-        Easy,
-        Medium,
-        Hard,
-        Expert
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public IEnumerable<Quiz> Quizzes { get; set; }
     }
 }
