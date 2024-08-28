@@ -120,5 +120,11 @@ namespace RTQuiz.Data
             base.OnModelCreating(modelBuilder);
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            DBSeed.SeedData();
+            base.OnConfiguring(optionsBuilder);
+        }
+        
     }
 }
