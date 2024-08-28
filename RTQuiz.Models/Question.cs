@@ -18,11 +18,9 @@ namespace RTQuiz.Models
         public Quiz Quiz { get; set; }
         [Required]
         [StringLength(200)]
-        public string Statement { get; set; }
-        [Required]
-        public IEnumerable<Answer> Answers { get; set; }
-
+        public string Text { get; set; }
         public TimeSpan TimeLimit { get; set; }
+        public List<Answer> Answers { get; set; }
 
     }
 }

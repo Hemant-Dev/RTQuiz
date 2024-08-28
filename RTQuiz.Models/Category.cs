@@ -10,6 +10,6 @@ namespace RTQuiz.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IEnumerable<Quiz> Quizzes { get; set; }
+        public List<Quiz> Quizzes { get; set; }
     }
 }

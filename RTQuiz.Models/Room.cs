@@ -19,10 +19,12 @@ namespace RTQuiz.Models
         public string Name { get; set; }
         [Required]
         public int HostUserId { get; set; }
+        public User Host { get; set; }
         [Required]
         public int? ActiveQuizId { get; set; }
         public Quiz ActiveQuiz { get; set; }
-        public IEnumerable<UserRoom> Participants { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public List<UserRoom> Participants { get; set; }
 
     }
 }

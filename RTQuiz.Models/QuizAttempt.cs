@@ -19,10 +19,11 @@ namespace RTQuiz.Models
         [Required]
         public int QuizId { get; set; }
         public Quiz Quiz { get; set; }
-
+        public int? RoomId { get; set; }
+        public Room Room { get; set; }
         public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
         public int Score { get; set; }
-        public IEnumerable<UserAnswer> UserAnswers { get; set; }
+        public List<UserAnswer> UserAnswers { get; set; }
     }
 }

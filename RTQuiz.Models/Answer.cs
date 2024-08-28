@@ -18,7 +18,7 @@ namespace RTQuiz.Models
         public Question Question { get; set; }
         [Required]
         [StringLength(100)]
-        public string Statement { get; set; }
+        public string Text { get; set; }
         [Required]
         public bool IsCorrect { get; set; }
     }

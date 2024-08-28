@@ -19,6 +19,9 @@ namespace RTQuiz.Models
         [Required]
         [StringLength(50)]
         public string Email { get; set; }
-        public IEnumerable<Quiz> QuizAttempts { get; set; }
+        public string PasswordHash { get; set; }
+        public List<Quiz> QuizAttempts { get; set; }
+        public List<Room> HostedRooms { get; set; } 
+        public List<UserRoom> JoinedRooms { get; set; }
     }
 }

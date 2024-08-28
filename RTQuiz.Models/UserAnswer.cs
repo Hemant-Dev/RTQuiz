@@ -21,5 +21,6 @@ namespace RTQuiz.Models
         public Question Question { get; set; }
         public int AnswerId { get; set; }
         public Answer Answer { get; set; }
+        public DateTime AnsweredAt { get; set; }
     }
 }
