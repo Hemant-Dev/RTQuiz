@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RTQuiz.Data\RTQuiz.Data.csproj" />
+    <ProjectReference Include="..\RTQuiz.IRepository\RTQuiz.IRepositories.csproj" />
+  </ItemGroup>
+
 </Project>

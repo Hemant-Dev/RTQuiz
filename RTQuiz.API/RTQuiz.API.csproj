@@ -20,6 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RTQuiz.Data\RTQuiz.Data.csproj" />
+    <ProjectReference Include="..\RTQuiz.DTO\RTQuiz.DTO.csproj" />
+    <ProjectReference Include="..\RTQuiz.IServices\RTQuiz.IServices.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RTQuiz.DTO\RTQuiz.DTO.csproj" />
+    <ProjectReference Include="..\RTQuiz.IRepository\RTQuiz.IRepositories.csproj" />
+    <ProjectReference Include="..\RTQuiz.IServices\RTQuiz.IServices.csproj" />
+    <ProjectReference Include="..\RTQuiz.Models\RTQuiz.Models.csproj" />
+  </ItemGroup>
+
 </Project>
