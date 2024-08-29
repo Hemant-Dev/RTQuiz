@@ -1,10 +1,14 @@
 using Asp.Versioning;
+using Microsoft.EntityFrameworkCore;
+using RTQuiz.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var connectionString = builder.Configuration.GetConnectionString("Default");
 // Add services to the container.
+builder.Services.AddEntityFrameworkNpgsql().AddDbContext<QuizDBContext>(options => options.UseNpgsql(connectionString));
 
 builder.Services.AddControllers();
+
 
 // Api Versioning
 builder.Services.AddApiVersioning(options =>
@@ -23,7 +27,7 @@ builder.Services.AddApiVersioning(options =>
     options.SubstituteApiVersionInUrl = true;
 });
 
-var app = builder.Build();
+var app = builder.Build();  
 
 // Configure the HTTP request pipeline.
 

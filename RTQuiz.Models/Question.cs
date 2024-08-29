@@ -21,6 +21,5 @@ namespace RTQuiz.Models
         public string Text { get; set; }
         public TimeSpan TimeLimit { get; set; }
         public List<Answer> Answers { get; set; }
-
     }
 }
