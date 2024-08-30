@@ -1,11 +1,28 @@
 using Asp.Versioning;
 using Microsoft.EntityFrameworkCore;
 using RTQuiz.Data;
+using RTQuiz.IRepositories;
+using RTQuiz.IServices;
+using RTQuiz.Profiles;
+using RTQuiz.Repositories;
+using RTQuiz.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Default");
 // Add services to the container.
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<QuizDBContext>(options => options.UseNpgsql(connectionString));
+
+//builder.Services.AddControllers()
+//    .AddJsonOptions(options =>
+//    {
+//        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+//    });
+
+builder.Services.AddAutoMapper(typeof(QuizProfile));
+
+builder.Services.AddScoped<IQuizRepository, QuizRepository>();
+builder.Services.AddScoped<IQuizService, QuizService>();
 
 builder.Services.AddControllers();
 
@@ -28,6 +45,7 @@ builder.Services.AddApiVersioning(options =>
 });
 
 var app = builder.Build();  
+
 
 // Configure the HTTP request pipeline.
 

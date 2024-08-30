@@ -18,19 +18,22 @@ namespace RTQuiz.API.Controllers
         {
             _quizService = quizService;
         }
+
         // GET: api/<QuizController>
         [HttpGet]
         public async Task<IEnumerable<GetQuizDTO>> GetAllQuizzes()
         {
-            var quiz = await _quizService.GetAllQuizAsync();
-            return quiz;
+            //var quiz = await _quizService.GetAllQuizAsync();
+            var quiz = await _quizService.GetAllQuizWithOtherDataAsync();
+            return quiz;    
         }
 
         // GET api/<QuizController>/5
         [HttpGet("{id}")]
         public async Task<GetQuizDTO> GetQuiz(int id)
         {
-            var quiz = await _quizService.GetQuizByIdAsync(id);
+            //var quiz = await _quizService.GetQuizByIdAsync(id);
+            var quiz = await _quizService.GetQuizByIdWithOtherDataAsync(id);
             return quiz;
         }
 

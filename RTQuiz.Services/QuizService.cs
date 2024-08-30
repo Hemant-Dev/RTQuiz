@@ -36,11 +36,22 @@ namespace RTQuiz.Services
 
         public async Task<IEnumerable<GetQuizDTO>> GetAllQuizAsync()
         {
-            var quizzesDTO = await _quizRepository.GetAllAsync();
-            if (quizzesDTO == null)
+            IEnumerable<Quiz> quizzes = await _quizRepository.GetAllAsync();
+            if (quizzes == null)
                 return null;
-            var quizzesDTOList = _mapper.Map<IEnumerable<GetQuizDTO>>(quizzesDTO);
+
+            var quizzesDTOList = _mapper.Map<IEnumerable<GetQuizDTO>>(quizzes);
+
             return quizzesDTOList;
+        }
+
+        public async Task<IEnumerable<GetQuizDTO>> GetAllQuizWithOtherDataAsync()
+        {
+            var quizList = await _quizRepository.GetAllQuizWithOtherData();
+
+            var quizDTOList = _mapper.Map<IEnumerable<GetQuizDTO>>(quizList);
+
+            return quizDTOList;
         }
 
         public async Task<GetQuizDTO> GetQuizByIdAsync(int id)
@@ -50,10 +61,17 @@ namespace RTQuiz.Services
             return quizDTO;
         }
 
+        public async Task<GetQuizDTO> GetQuizByIdWithOtherDataAsync(int id)
+        {
+            var quizObj = await _quizRepository.GetQuizWithOtherDataById(id);
+            var quizDTO = _mapper.Map<GetQuizDTO>(quizObj);
+            return quizDTO;
+        }
+
         public async Task<GetQuizDTO> UpdateQuiz(UpdateQuizDTO updateQuizDTO)
         {
             var oldQuiz = await _quizRepository.GetAsync(updateQuizDTO.Id);
-            if(oldQuiz == null)
+            if (oldQuiz == null)
                 return null;
             await _quizRepository.UpdateAsync(oldQuiz);
             var quizDTO = _mapper.Map<GetQuizDTO>(oldQuiz);

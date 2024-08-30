@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RTQuiz.Models
 {
     public class Quiz
-    {
+    {   
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -24,7 +24,7 @@ namespace RTQuiz.Models
         public int? QuizSeriesId { get; set; }
         public QuizSeries QuizSeries { get; set; }
         public List<Question> Questions { get; set; }
-        public List<QuizAttempt> QuizAttempts { get; set; }
+        public List<QuizAttempt> QuizAttempts { get; set; } 
         public List<Room> Rooms { get; set; }
     }
 }

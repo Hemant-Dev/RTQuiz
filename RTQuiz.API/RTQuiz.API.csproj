@@ -22,6 +22,9 @@
     <ProjectReference Include="..\RTQuiz.Data\RTQuiz.Data.csproj" />
     <ProjectReference Include="..\RTQuiz.DTO\RTQuiz.DTO.csproj" />
     <ProjectReference Include="..\RTQuiz.IServices\RTQuiz.IServices.csproj" />
+    <ProjectReference Include="..\RTQuiz.Profiles\RTQuiz.Profiles.csproj" />
+    <ProjectReference Include="..\RTQuiz.Repositories\RTQuiz.Repositories.csproj" />
+    <ProjectReference Include="..\RTQuiz.Services\RTQuiz.Services.csproj" />
   </ItemGroup>
 
 </Project>

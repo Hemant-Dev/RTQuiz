@@ -1,4 +1,5 @@
-﻿using RTQuiz.IRepository;
+﻿using RTQuiz.DTO;
+using RTQuiz.IRepository;
 using RTQuiz.Models;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace RTQuiz.IRepositories
 {
     public interface IQuizRepository : IBaseRepository<Quiz>
     {
-
+        Task<IEnumerable<Quiz>> GetAllQuizWithOtherData();
+        Task<Quiz> GetQuizWithOtherDataById(int id);
     }
 }
