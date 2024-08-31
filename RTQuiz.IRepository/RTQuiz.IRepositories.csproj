@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RTQuiz.Data\RTQuiz.Data.csproj" />
     <ProjectReference Include="..\RTQuiz.DTO\RTQuiz.DTO.csproj" />
     <ProjectReference Include="..\RTQuiz.Models\RTQuiz.Models.csproj" />
   </ItemGroup>

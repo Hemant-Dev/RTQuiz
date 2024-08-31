@@ -1,6 +1,6 @@
 ﻿namespace RTQuiz.IRepository
 {
-    public interface IBaseRepository<T> where T : class
+    public interface IQuestionService<T> where T : class
     {
         Task<IEnumerable<T>> GetAllAsync(); 
         Task<T> GetAsync(int id);

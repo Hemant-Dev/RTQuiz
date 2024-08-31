@@ -1,4 +1,4 @@
-﻿using RTQuiz.DTO;
+﻿using RTQuiz.Data;
 using RTQuiz.IRepository;
 using RTQuiz.Models;
 using System;
@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace RTQuiz.IRepositories
 {
-    public interface IQuizRepository : IQuestionService<Quiz>
+    public interface IQuestionRepository : IQuestionService<Question>
     {
-        Task<IEnumerable<Quiz>> GetAllQuizWithOtherData();
-        Task<Quiz> GetQuizWithOtherDataById(int id);
+        Task<IEnumerable<Question>> GetAllQuestion();
+        Task<Question> GetQuestionById(int id);
     }
 }

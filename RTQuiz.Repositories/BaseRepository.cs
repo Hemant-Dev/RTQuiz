@@ -4,7 +4,7 @@ using RTQuiz.IRepository;
 
 namespace RTQuiz.Repositories
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IQuestionService<T> where T : class
     {
         private readonly QuizDBContext _quizDBContext;
 
