@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RTQuiz.IRepositories
 {
-    public interface IQuizRepository : IQuestionService<Quiz>
+    public interface IQuizRepository : IBaseRepository<Quiz>
     {
         Task<IEnumerable<Quiz>> GetAllQuizWithOtherData();
         Task<Quiz> GetQuizWithOtherDataById(int id);

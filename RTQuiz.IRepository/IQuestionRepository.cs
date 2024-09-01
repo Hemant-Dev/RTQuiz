@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RTQuiz.IRepositories
 {
-    public interface IQuestionRepository : IQuestionService<Question>
+    public interface IQuestionRepository : IBaseRepository<Question>
     {
         Task<IEnumerable<Question>> GetAllQuestion();
         Task<Question> GetQuestionById(int id);

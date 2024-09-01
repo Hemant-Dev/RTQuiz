@@ -17,3 +17,11 @@ GET http://localhost:5120/api/v1/question
 GET http://localhost:5120/api/v1/question/1
 
 ###
+
+GET http://localhost:5120/api/v1/quizseries
+
+###
+
+GET http://localhost:5120/api/v1/quizseries/1
+
+###

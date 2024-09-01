@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RTQuiz.DTO;
+using RTQuiz.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace RTQuiz.Profiles
     {
         public QuizSeriesProfile()
         {
-            CreateMap<CreateQuizSeriesDTO, QuizSeriesProfile>();
-            CreateMap<UpdateQuizSeriesDTO, QuizSeriesProfile>();
-            CreateMap<QuizSeriesProfile, GetQuizSeriesDTO>();
+            CreateMap<CreateQuizSeriesDTO, QuizSeries>();
+            CreateMap<UpdateQuizSeriesDTO, QuizSeries>();
+            CreateMap<QuizSeries, GetQuizSeriesDTO>();
         }
     }
 }
