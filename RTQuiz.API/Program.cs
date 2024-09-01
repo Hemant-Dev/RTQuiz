@@ -22,6 +22,7 @@ builder.Services.AddEntityFrameworkNpgsql().AddDbContext<QuizDBContext>(options 
 builder.Services.AddAutoMapper(typeof(QuizProfile));
 builder.Services.AddAutoMapper(typeof(QuestionProfile));
 builder.Services.AddAutoMapper(typeof(QuizSeriesProfile));
+builder.Services.AddAutoMapper(typeof(AnswerProfile));
 
 builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IQuizService, QuizService>();
@@ -31,6 +32,9 @@ builder.Services.AddScoped<IQuestionService, QuestionService>();
 
 builder.Services.AddScoped<IQuizSeriesRepository, QuizSeriesRepository>();
 builder.Services.AddScoped<IQuizSeriesService, QuizSeriesService>();
+
+builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
+builder.Services.AddScoped<IAnswerService, AnswerService>();    
 
 builder.Services.AddControllers();
 

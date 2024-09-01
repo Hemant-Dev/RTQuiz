@@ -46,6 +46,8 @@ namespace RTQuiz.API.Controllers
         [HttpPut("{id}")]
         public Task<GetQuizSeriesDTO> Put(int id, [FromBody] UpdateQuizSeriesDTO updateQuizSeriesDTO)
         {
+            if (id != updateQuizSeriesDTO.Id)
+                return null;
             var res = _quizSeriesService.UpdateQuizSeries(updateQuizSeriesDTO);
             return res;
         }
