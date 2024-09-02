@@ -52,9 +52,9 @@ namespace RTQuiz.API.Controllers
 
         // DELETE api/<RoomController>/5
         [HttpDelete("{id}")]
-        public Task<GetRoomDTO> Delete(int id)
+        public async Task<GetRoomDTO> Delete(int id)
         {
-            var res = _roomService.DeleteRoom(id);
+            var res = await _roomService.DeleteRoom(id);
             return res;
         }
     }

@@ -18,9 +18,14 @@ namespace RTQuiz.Repositories
             _quizDBContext = quizDBContext;   
         }
 
-        public Task<IEnumerable<UserAnswer>> GetAllUserAnswerWithOtherData()
+        public async Task<IEnumerable<UserAnswer>> GetAllUserAnswerWithOtherData()
         {
-            var answerList = _quizDBContext.UserAnswers.Include()
+            var userAnswerList = await _quizDBContext.UserAnswers
+                .Include(u => u.QuizAttempt)
+                .Include(u => u.Answer)
+                .Include(u => u.Question)
+                .ToListAsync();
+            return userAnswerList;
         }
     }
 }
