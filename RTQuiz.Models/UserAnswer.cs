@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace RTQuiz.Models
 {
     public class UserAnswer
-    { 
+    {   
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

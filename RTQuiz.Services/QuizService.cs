@@ -27,7 +27,7 @@ namespace RTQuiz.Services
         public async Task<GetQuizDTO> DeleteQuiz(int id)
         {
             var quiz = await _quizRepository.GetAsync(id);
-            if (quiz== null)
+            if (quiz == null)
                 return null;
             await _quizRepository.DeleteAsync(quiz);
             var returnDTO = _mapper.Map<GetQuizDTO>(quiz);

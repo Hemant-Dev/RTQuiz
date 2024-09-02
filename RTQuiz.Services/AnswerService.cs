@@ -32,6 +32,9 @@ namespace RTQuiz.Services
         public async Task<GetAnswerDTO> DeleteAnswer(int id)
         {
             var answer = await _answerRepository.GetAsync(id);
+            if (answer == null)
+                return null;
+
             var deletedAnswer = await _answerRepository.DeleteAsync(answer);
             var answerDTO = _mapper.Map<GetAnswerDTO>(deletedAnswer);
             return answerDTO;

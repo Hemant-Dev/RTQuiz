@@ -23,6 +23,7 @@ builder.Services.AddAutoMapper(typeof(QuizProfile));
 builder.Services.AddAutoMapper(typeof(QuestionProfile));
 builder.Services.AddAutoMapper(typeof(QuizSeriesProfile));
 builder.Services.AddAutoMapper(typeof(AnswerProfile));
+builder.Services.AddAutoMapper(typeof(RoomProfile));
 
 builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IQuizService, QuizService>();
@@ -35,6 +36,10 @@ builder.Services.AddScoped<IQuizSeriesService, QuizSeriesService>();
 
 builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
 builder.Services.AddScoped<IAnswerService, AnswerService>();    
+
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IRoomService, RoomService>();
+
 
 builder.Services.AddControllers();
 

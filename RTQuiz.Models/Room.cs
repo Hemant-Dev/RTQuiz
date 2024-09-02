@@ -23,7 +23,7 @@ namespace RTQuiz.Models
         [Required]
         public int? ActiveQuizId { get; set; }
         public Quiz ActiveQuiz { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
         public List<UserRoom> Participants { get; set; }
 
     }

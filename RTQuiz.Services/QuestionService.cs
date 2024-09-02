@@ -23,21 +23,22 @@ namespace RTQuiz.Services
             _mapper = mapper;
         }
 
-        public async Task<GetQuestionDTO> CreateQuestion(CreateQuestionDTO questionDTO)
+        public async Task<GetQuestionDTO> CreateQuestion(CreateQuestionDTO createQuestionDTO)
         {
-            var question = _mapper.Map<Question>(questionDTO);
-            await _questionRepository.CreateAsync(question);
-            var questiondto = _mapper.Map<GetQuestionDTO>(question);
-            return questiondto;
+            var question = _mapper.Map<Question>(createQuestionDTO);
+            var savedQuestionDTO = await _questionRepository.CreateAsync(question);
+            var questionDTO = _mapper.Map<GetQuestionDTO>(savedQuestionDTO);
+            return questionDTO;
         }
 
         public async Task<GetQuestionDTO> DeleteQuestion(int id)
         {
             var question = await _questionRepository.GetQuestionById(id);
-            if (question== null)
+            if (question == null)
                 return null;
-            await _questionRepository.DeleteAsync(question);
-            var questionDTO = _mapper.Map<GetQuestionDTO>(question);
+            
+            var deletedRoom = await _questionRepository.DeleteAsync(question);
+            var questionDTO = _mapper.Map<GetQuestionDTO>(deletedRoom);
             return questionDTO;
         }
 
