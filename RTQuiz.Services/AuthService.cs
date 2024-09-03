@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Helpers;
+using Microsoft.EntityFrameworkCore;
 using RTQuiz.Data;
 using RTQuiz.DTO;
 using RTQuiz.IServices;
@@ -30,8 +31,8 @@ namespace RTQuiz.Services
                 return null; // Return that user doesn't exist
 
             // verify Password Hash 
-            //if (!HelperFunctions.VerifyHashedPassword(loginDTO.Password, user.PasswordHash))
-            //    return null; // Return Invalid
+            if (!PasswordHasherHelper.VerifyHashedPassword(loginDTO.Password, user.PasswordHash))
+                return null; // Return Invalid
 
             // Generate JWT
             var accessToken = _jwtService.CreateJWT(user);
