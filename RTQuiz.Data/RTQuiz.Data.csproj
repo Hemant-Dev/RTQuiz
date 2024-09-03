@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Helpers\Helpers.csproj" />
     <ProjectReference Include="..\RTQuiz.Models\RTQuiz.Models.csproj" />
   </ItemGroup>
 

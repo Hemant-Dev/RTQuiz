@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Helpers;
+using Microsoft.EntityFrameworkCore;
 using RTQuiz.Models;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,9 @@ namespace RTQuiz.Data
         }
         public void SeedData()
         {
+            var hashedPassword = PasswordHasherHelper.PasswordHasher("password");
             _modelBuilder.Entity<User>()
-                .HasData( new User() { Id = 1, Username = "hemant", Email = "email", PasswordHash = "password" });
+                .HasData( new User() { Id = 1, Username = "hemant", Email = "email", PasswordHash =  hashedPassword});
 
             _modelBuilder.Entity<QuizSeries>()
                 .HasData( new QuizSeries() { Id = 1, Title = "Sample", Description = "Sample" });

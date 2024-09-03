@@ -48,6 +48,9 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IUserAnswerRepository, UserAnswerRepository>();
 builder.Services.AddScoped<IUserAnswerService, UserAnswerService>();
 
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<JWTService>();
+
 builder.Services.AddControllers();
 
 // Api Versioning
@@ -67,8 +70,7 @@ builder.Services.AddApiVersioning(options =>
     options.SubstituteApiVersionInUrl = true;
 });
 
-var app = builder.Build();  
-
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 

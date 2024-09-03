@@ -3,23 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.API", "RTQuiz.API\RTQuiz.API.csproj", "{275EB697-D491-40A8-B7D3-EC8D6E1DAC62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.API", "RTQuiz.API\RTQuiz.API.csproj", "{275EB697-D491-40A8-B7D3-EC8D6E1DAC62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.Data", "RTQuiz.Data\RTQuiz.Data.csproj", "{4D03D215-1D12-4F2E-81AE-B57A9A074545}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.Data", "RTQuiz.Data\RTQuiz.Data.csproj", "{4D03D215-1D12-4F2E-81AE-B57A9A074545}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.IRepositories", "RTQuiz.IRepository\RTQuiz.IRepositories.csproj", "{96421FB1-A951-481F-BFA0-5E2FBDABC9E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.IRepositories", "RTQuiz.IRepository\RTQuiz.IRepositories.csproj", "{96421FB1-A951-481F-BFA0-5E2FBDABC9E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.Repositories", "RTQuiz.Repositories\RTQuiz.Repositories.csproj", "{14626DC0-5603-455E-82FF-1A5872BC487C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.Repositories", "RTQuiz.Repositories\RTQuiz.Repositories.csproj", "{14626DC0-5603-455E-82FF-1A5872BC487C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.IServices", "RTQuiz.IServices\RTQuiz.IServices.csproj", "{43FE7A57-7FF2-435E-94E8-12F7C42B27EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.IServices", "RTQuiz.IServices\RTQuiz.IServices.csproj", "{43FE7A57-7FF2-435E-94E8-12F7C42B27EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.Services", "RTQuiz.Services\RTQuiz.Services.csproj", "{50C5DA7F-8F9C-48F6-9DA8-95D05BBAECC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.Services", "RTQuiz.Services\RTQuiz.Services.csproj", "{50C5DA7F-8F9C-48F6-9DA8-95D05BBAECC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.Models", "RTQuiz.Models\RTQuiz.Models.csproj", "{F4F2EC8F-C376-4C13-A8FB-85B720BE55BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.Models", "RTQuiz.Models\RTQuiz.Models.csproj", "{F4F2EC8F-C376-4C13-A8FB-85B720BE55BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.DTO", "RTQuiz.DTO\RTQuiz.DTO.csproj", "{2E2EA741-379D-43AE-B2F4-92DC5F34BDB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.DTO", "RTQuiz.DTO\RTQuiz.DTO.csproj", "{2E2EA741-379D-43AE-B2F4-92DC5F34BDB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTQuiz.Profiles", "RTQuiz.Profiles\RTQuiz.Profiles.csproj", "{DA91189F-11C6-456B-9C06-C2DB856C717A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTQuiz.Profiles", "RTQuiz.Profiles\RTQuiz.Profiles.csproj", "{DA91189F-11C6-456B-9C06-C2DB856C717A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helpers", "Helpers\Helpers.csproj", "{CE26DE50-CA6C-45A4-8CFB-1012961D20F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{DA91189F-11C6-456B-9C06-C2DB856C717A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA91189F-11C6-456B-9C06-C2DB856C717A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA91189F-11C6-456B-9C06-C2DB856C717A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE26DE50-CA6C-45A4-8CFB-1012961D20F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE26DE50-CA6C-45A4-8CFB-1012961D20F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE26DE50-CA6C-45A4-8CFB-1012961D20F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE26DE50-CA6C-45A4-8CFB-1012961D20F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

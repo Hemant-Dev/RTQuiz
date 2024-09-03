@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RTQuiz.Data;
@@ -11,9 +12,11 @@ using RTQuiz.Data;
 namespace RTQuiz.Data.Migrations
 {
     [DbContext(typeof(QuizDBContext))]
-    partial class QuizDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240903101603_AddedTokenModel")]
+    partial class AddedTokenModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -380,7 +383,7 @@ namespace RTQuiz.Data.Migrations
                         {
                             Id = 1,
                             Email = "email",
-                            PasswordHash = "lo71hy5cdTEFukwEI5WqXIF3prqDBuwTBvuZkknj6Nw9RK6L7tuW7YmRa1U+exR7",
+                            PasswordHash = "password",
                             Username = "hemant"
                         });
                 });

@@ -22,6 +22,8 @@ namespace RTQuiz.Data
         public DbSet<UserAnswer> UserAnswers { get; set; }
         public DbSet<LeaderboardEntry> LeaderboardEntries { get; set; }
 
+        public DbSet<Token> Tokens { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // User relationships
