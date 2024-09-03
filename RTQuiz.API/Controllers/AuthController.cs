@@ -27,8 +27,9 @@ namespace RTQuiz.API.Controllers
         }
         // GET: api/<AuthController>
         [HttpGet("authenticate")]
-        public async Task<GetTokenDTO> Authenticate(LoginDTO loginDTO)
+        public async Task<GetTokenDTO> Authenticate()
         {
+            var loginDTO = new LoginDTO("email", "password");
             var res = await _authService.Authenticate(loginDTO);
             return res;
         }

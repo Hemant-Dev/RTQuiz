@@ -38,8 +38,8 @@ namespace RTQuiz.Services
             var accessToken = _jwtService.CreateJWT(user);
             var refreshToken = _jwtService.CreateRefreshToken();
             // Check if refreshToken exists else create new one
-            var oldToken = await _quizDBContext.Tokens.AsNoTracking()
-                .FirstOrDefaultAsync(t => t.UserId == user.Id);
+            //var oldToken = await _quizDBContext.Tokens.AsNoTracking()
+            //    .FirstOrDefaultAsync(t => t.UserId == user.Id);
             //while(oldToken.RefreshToken == refreshToken)
             //{
             //    refreshToken = _jwtService.CreateRefreshToken();
