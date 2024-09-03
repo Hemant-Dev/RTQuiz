@@ -46,6 +46,8 @@ namespace RTQuiz.API.Controllers
         [HttpPut("{id}")]
         public async Task<GetUserAnswerDTO> Put(int id, [FromBody] UpdateUserAnswerDTO updateUserAnswerDTO)
         {
+            if (id != updateUserAnswerDTO.Id)
+                return null;
             var res = await _userAnswerService.UpdateUserAnswer(updateUserAnswerDTO);
             return res;
         }

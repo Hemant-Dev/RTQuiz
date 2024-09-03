@@ -46,6 +46,8 @@ namespace RTQuiz.API.Controllers
         [HttpPut("{id}")]
         public async Task<GetCategoryDTO> Put(int id, [FromBody] UpdateCategoryDTO updateCategoryDTO)
         {
+            if (id != updateCategoryDTO.Id)
+                return null;
             var res = await _categoryService.UpdateCategory(updateCategoryDTO);
             return res;
         }
