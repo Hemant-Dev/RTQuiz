@@ -26,6 +26,7 @@ builder.Services.AddAutoMapper(typeof(AnswerProfile));
 builder.Services.AddAutoMapper(typeof(RoomProfile));
 builder.Services.AddAutoMapper(typeof(UserAnswerProfile));
 builder.Services.AddAutoMapper(typeof(CategoryProfile));
+builder.Services.AddAutoMapper(typeof(UserProfile));
 
 builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IQuizService, QuizService>();

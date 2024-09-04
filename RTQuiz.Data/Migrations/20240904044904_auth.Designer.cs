@@ -12,8 +12,8 @@ using RTQuiz.Data;
 namespace RTQuiz.Data.Migrations
 {
     [DbContext(typeof(QuizDBContext))]
-    [Migration("20240903105204_AddedHashPassword")]
-    partial class AddedHashPassword
+    [Migration("20240904044904_auth")]
+    partial class auth
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -383,7 +383,7 @@ namespace RTQuiz.Data.Migrations
                         {
                             Id = 1,
                             Email = "email",
-                            PasswordHash = "lo71hy5cdTEFukwEI5WqXIF3prqDBuwTBvuZkknj6Nw9RK6L7tuW7YmRa1U+exR7",
+                            PasswordHash = "6+FpLTfstBo2wGsgvKweHClDl6qAX2W3BeWwZQ1W2qLymWeyAVKknDzdybKcdas6",
                             Username = "hemant"
                         });
                 });

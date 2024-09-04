@@ -10,5 +10,6 @@ namespace RTQuiz.IServices
     public interface IAuthService
     {
         Task<GetTokenDTO> Authenticate(LoginDTO loginDTO);
+        Task<GetUserDTO> RegisterUser(CreateUserDTO createUserDTO);
     }
 }

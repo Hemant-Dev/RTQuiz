@@ -26,11 +26,16 @@ namespace RTQuiz.API.Controllers
             _quizDBContext = quizDBContext;
         }
         // GET: api/<AuthController>
-        [HttpGet("authenticate")]
-        public async Task<GetTokenDTO> Authenticate()
+        [HttpPost("authenticate")]
+        public async Task<GetTokenDTO> Authenticate(LoginDTO loginDTO)
         {
-            var loginDTO = new LoginDTO("email", "password");
             var res = await _authService.Authenticate(loginDTO);
+            return res;
+        }
+        [HttpPost("register")]
+        public async Task<GetUserDTO> Register(CreateUserDTO createUserDTO)
+        {
+            var res = await _authService.RegisterUser(createUserDTO);
             return res;
         }
 

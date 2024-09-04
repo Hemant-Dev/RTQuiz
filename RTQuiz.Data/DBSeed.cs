@@ -12,14 +12,15 @@ namespace RTQuiz.Data
     public class DBSeed
     {
         private readonly ModelBuilder _modelBuilder;
+        private readonly string hashedPassword;
 
         public DBSeed(ModelBuilder modelBuilder)
         {
             _modelBuilder = modelBuilder;
+            hashedPassword = PasswordHasherHelper.PasswordHasher("password");
         }
         public void SeedData()
         {
-            var hashedPassword = PasswordHasherHelper.PasswordHasher("password");
             _modelBuilder.Entity<User>()
                 .HasData( new User() { Id = 1, Username = "hemant", Email = "email", PasswordHash =  hashedPassword});
 

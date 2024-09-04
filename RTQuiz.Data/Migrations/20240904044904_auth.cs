@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace RTQuiz.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class quizv1 : Migration
+    public partial class auth : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -89,6 +89,28 @@ namespace RTQuiz.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tokens",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    AccessToken = table.Column<string>(type: "text", nullable: false),
+                    RefreshToken = table.Column<string>(type: "text", nullable: false),
+                    RefreshTokenExpiry = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tokens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tokens_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -304,7 +326,7 @@ namespace RTQuiz.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "PasswordHash", "Username" },
-                values: new object[] { 1, "email", "password", "hemant" });
+                values: new object[] { 1, "email", "6+FpLTfstBo2wGsgvKweHClDl6qAX2W3BeWwZQ1W2qLymWeyAVKknDzdybKcdas6", "hemant" });
 
             migrationBuilder.InsertData(
                 table: "Quizzes",
@@ -387,6 +409,11 @@ namespace RTQuiz.Data.Migrations
                 column: "HostUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tokens_UserId",
+                table: "Tokens",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserAnswers_AnswerId",
                 table: "UserAnswers",
                 column: "AnswerId");
@@ -412,6 +439,9 @@ namespace RTQuiz.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "LeaderboardEntries");
+
+            migrationBuilder.DropTable(
+                name: "Tokens");
 
             migrationBuilder.DropTable(
                 name: "UserAnswers");
