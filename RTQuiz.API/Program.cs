@@ -1,5 +1,6 @@
 using Asp.Versioning;
 using Microsoft.EntityFrameworkCore;
+using RTQuiz.API.Hubs;
 using RTQuiz.Data;
 using RTQuiz.IRepositories;
 using RTQuiz.IServices;
@@ -54,6 +55,8 @@ builder.Services.AddScoped<JWTService>();
 
 builder.Services.AddControllers();
 
+builder.Services.AddSignalR();
+
 // Api Versioning
 builder.Services.AddApiVersioning(options =>
 {
@@ -78,5 +81,6 @@ var app = builder.Build();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<QuizHub>("/quizhub");
 
 app.Run();
