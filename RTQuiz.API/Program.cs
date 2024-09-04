@@ -77,10 +77,8 @@ builder.Services.AddApiVersioning(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-
 app.UseAuthorization();
-
 app.MapControllers();
-app.MapHub<QuizHub>("/quizhub");
 
+app.MapHub<QuizHub>("quiz-hub");
 app.Run();
