@@ -61,5 +61,23 @@ namespace RTQuiz.API.Hubs
                 .JoinRoom(userRoomSavedToDictionary);
         }
 
+        public async Task LeaveRoom(string roomCode, int userId)
+        {
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomCode);
+            //_connection.Remove(Context.ConnectionId);
+            await Clients.Group(roomCode).LeaveRoom(userId, roomCode);
+
+        }
+
+        public async Task StartQuiz(GetQuizDTO getQuizDTO, string roomCode)
+        {
+            await Clients.Group(roomCode).StartQuiz(getQuizDTO.Id, roomCode);
+
+        }
+
+        public async Task EndQuiz(GetQuizDTO getQuizDTO, string roomCode)
+        {
+            await Clients.Group(roomCode).EndQuiz(getQuizDTO.Id, roomCode);
+        }
     }
 }

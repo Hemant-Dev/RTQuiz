@@ -9,6 +9,7 @@ namespace RTQuiz.API.Hubs
         Task CreateRoom(GetRoomDTO roomDTO);
         Task JoinRoom(UserRoom room);
         Task LeaveRoom(int userId, string roomCode);
-
+        Task StartQuiz(int quizId, string roomCode);
+        Task EndQuiz(int quizId, string roomCode);
     }
 }
