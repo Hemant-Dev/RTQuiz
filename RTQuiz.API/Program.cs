@@ -54,7 +54,7 @@ builder.Services.AddScoped<IUserAnswerService, UserAnswerService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<JWTService>();
 
-builder.Services.AddSingleton<IDictionary<string, GetRoomDTO>>(opt => new Dictionary<string, GetRoomDTO>());
+builder.Services.AddSingleton<IDictionary<string, UserRoom>>(opt => new Dictionary<string, UserRoom>());
 
 builder.Services.AddControllers();
 

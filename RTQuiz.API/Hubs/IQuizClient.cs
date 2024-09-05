@@ -7,7 +7,7 @@ namespace RTQuiz.API.Hubs
     {
         Task ReceiveMessage(string message);
         Task CreateRoom(GetRoomDTO roomDTO);
-        Task JoinRoom(int userId, string roomCode);
+        Task JoinRoom(UserRoom room);
         Task LeaveRoom(int userId, string roomCode);
 
     }
