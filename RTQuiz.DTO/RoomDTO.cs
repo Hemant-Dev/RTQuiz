@@ -10,6 +10,6 @@ namespace RTQuiz.DTO
 {
     public record CreateRoomDTO(string Code, string Name, int HostUserId, int ActiveQuizId, DateTime CreatedAt);
     public record UpdateRoomDTO(int Id, string Code, string Name, int HostUserId, int ActiveQuizId, DateTime CreateAt);
-    public record GetRoomDTO(int Id, string Code, string Name, int HostUserId, int ActiveQuizId, DateTime CreatedAt, List<UserRoom> Participants);
+    public record GetRoomDTO(int Id, string Code, string Name, int HostUserId, int ActiveQuizId, DateTime CreatedAt, List<UserRoom>? Participants);
 
 }

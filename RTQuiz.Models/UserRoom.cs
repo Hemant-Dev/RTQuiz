@@ -17,6 +17,6 @@ namespace RTQuiz.Models
         public int RoomId { get; set; }
         public Room Room { get; set; }
         [Required]
-        public DateTime JoinedAt { get; set; }
+        public DateTime JoinedAt { get; set; } = DateTime.Now;
     }
 }

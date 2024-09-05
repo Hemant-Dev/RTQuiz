@@ -2,12 +2,13 @@ using Asp.Versioning;
 using Microsoft.EntityFrameworkCore;
 using RTQuiz.API.Hubs;
 using RTQuiz.Data;
+using RTQuiz.DTO;
 using RTQuiz.IRepositories;
 using RTQuiz.IServices;
+using RTQuiz.Models;
 using RTQuiz.Profiles;
 using RTQuiz.Repositories;
 using RTQuiz.Services;
-using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Default");
@@ -52,6 +53,8 @@ builder.Services.AddScoped<IUserAnswerService, UserAnswerService>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<JWTService>();
+
+builder.Services.AddSingleton<IDictionary<string, GetRoomDTO>>(opt => new Dictionary<string, GetRoomDTO>());
 
 builder.Services.AddControllers();
 
