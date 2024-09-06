@@ -11,5 +11,6 @@ namespace RTQuiz.API.Hubs
         Task LeaveRoom(int userId, string roomCode);
         Task StartQuiz(int quizId, string roomCode);
         Task EndQuiz(int quizId, string roomCode);
+        Task NextQuestion(string roomCode, GetQuestionDTO questionDTO);
     }
 }

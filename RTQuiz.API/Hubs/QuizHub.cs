@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.SignalR;
 using RTQuiz.Data;
 using RTQuiz.DTO;
 using RTQuiz.IServices;
@@ -11,12 +12,14 @@ namespace RTQuiz.API.Hubs
         private readonly QuizDBContext _quizDBContext;
         private readonly IRoomService _roomService;
         private readonly IDictionary<string, UserRoom> _connection;
+        private readonly IMapper _mapper;
 
-        public QuizHub(QuizDBContext quizDBContext, IRoomService roomService, IDictionary<string, UserRoom> connection)
+        public QuizHub(QuizDBContext quizDBContext, IRoomService roomService, IDictionary<string, UserRoom> connection, IMapper mapper)
         {
             _quizDBContext = quizDBContext;
             _roomService = roomService;
             _connection = connection;
+            _mapper = mapper;
         }
 
         public override async Task OnConnectedAsync()
@@ -78,6 +81,13 @@ namespace RTQuiz.API.Hubs
         public async Task EndQuiz(GetQuizDTO getQuizDTO, string roomCode)
         {
             await Clients.Group(roomCode).EndQuiz(getQuizDTO.Id, roomCode);
+        }
+
+        public async Task NextQuestion(GetQuestionDTO getQuestionDTO, string roomCode)
+        {
+            var question = await _quizDBContext.Questions.FindAsync(getQuestionDTO.Id);
+            var questionDTO = _mapper.Map<GetQuestionDTO>(question);
+            await Clients.Group(roomCode).NextQuestion(roomCode, questionDTO);
         }
     }
 }
