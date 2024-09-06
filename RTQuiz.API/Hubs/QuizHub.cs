@@ -83,10 +83,12 @@ namespace RTQuiz.API.Hubs
             await Clients.Group(roomCode).EndQuiz(getQuizDTO.Id, roomCode);
         }
 
-        public async Task NextQuestion(GetQuestionDTO getQuestionDTO, string roomCode)
+        public async Task NextQuestion(int questionId, string roomCode)
         {
-            var question = await _quizDBContext.Questions.FindAsync(getQuestionDTO.Id);
+            var question = await _quizDBContext.Questions.FindAsync(questionId);
+
             var questionDTO = _mapper.Map<GetQuestionDTO>(question);
+
             await Clients.Group(roomCode).NextQuestion(roomCode, questionDTO);
         }
     }
