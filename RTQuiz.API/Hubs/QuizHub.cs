@@ -91,5 +91,10 @@ namespace RTQuiz.API.Hubs
 
             await Clients.Group(roomCode).NextQuestion(roomCode, questionDTO);
         }
+
+        public async Task SendAnswer(string roomCode, int questionId, int answerId)
+        {
+            await Clients.Group(roomCode).AnswerReceived(roomCode, questionId, answerId);
+        }
     }
 }
