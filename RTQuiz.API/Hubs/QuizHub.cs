@@ -30,7 +30,13 @@ namespace RTQuiz.API.Hubs
         {
             await Clients.All.ReceiveMessage(message);
         }
-        
+        public async Task SendConnectedUsers(string roomCode)
+        {
+            var connectedUsers = _connection.Values
+                .Where(u => u.Room.Code == roomCode)
+                .Select(u => u.User.Username);
+            await Clients.Group(Context.ConnectionId).ReceiveConnectedUsers(connectedUsers, roomCode);
+        }
         public async Task CreateRoom(CreateUserRoomDTO createUserRoomDTO)
         {
             var userRoom = await _roomService.GetRoomById(createUserRoomDTO.RoomId);
@@ -41,7 +47,7 @@ namespace RTQuiz.API.Hubs
                 UserId = userRoom.HostUserId,
                 RoomId = userRoom.Id
             };
-            _connection[Context.ConnectionId] = userRoomSavedToDictionary;
+            _connection[userRoom.Code] = userRoomSavedToDictionary;
 
             var room = new GetRoomDTO(userRoom.Id, userRoom.Code, userRoom.Name, userRoom.HostUserId, userRoom.ActiveQuizId, userRoom.CreatedAt, userRoom.Participants);
 
@@ -58,7 +64,7 @@ namespace RTQuiz.API.Hubs
                 UserId = userId,
                 RoomId = userRoom.Id
             };
-            _connection[Context.ConnectionId] = userRoomSavedToDictionary;
+            _connection[userRoom.Code] = userRoomSavedToDictionary;
 
             await Clients.Group(userRoom.Code)
                 .JoinRoom(userRoomSavedToDictionary);

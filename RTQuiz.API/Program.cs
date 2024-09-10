@@ -40,7 +40,7 @@ builder.Services.AddScoped<IQuizSeriesRepository, QuizSeriesRepository>();
 builder.Services.AddScoped<IQuizSeriesService, QuizSeriesService>();
 
 builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
-builder.Services.AddScoped<IAnswerService, AnswerService>();    
+builder.Services.AddScoped<IAnswerService, AnswerService>();
 
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IRoomService, RoomService>();
@@ -60,6 +60,15 @@ builder.Services.AddControllers();
 
 builder.Services.AddSignalR();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder
+            .WithOrigins("http://localhost:4200") // your Angular app URL
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials());
+});
 // Api Versioning
 builder.Services.AddApiVersioning(options =>
 {
@@ -68,7 +77,7 @@ builder.Services.AddApiVersioning(options =>
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.ApiVersionReader = ApiVersionReader.Combine(
             new UrlSegmentApiVersionReader(),
-            new HeaderApiVersionReader("X-Api-Version"));   
+            new HeaderApiVersionReader("X-Api-Version"));
 })
 .AddMvc()
 .AddApiExplorer(options =>
@@ -82,6 +91,6 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseAuthorization();
 app.MapControllers();
-
+app.UseCors("CorsPolicy");
 app.MapHub<QuizHub>("quiz-hub");
 app.Run();
