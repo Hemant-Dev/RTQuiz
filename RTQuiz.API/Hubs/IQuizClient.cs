@@ -13,6 +13,6 @@ namespace RTQuiz.API.Hubs
         Task EndQuiz(int quizId, string roomCode);
         Task NextQuestion(string roomCode, GetQuestionDTO questionDTO);
         Task AnswerReceived(string roomCode, int questionId, int answerId);
-        Task ReceiveConnectedUsers(IEnumerable<string> users, int roomId);
+        Task ReceiveConnectedUsers(IEnumerable<int> users, int roomId);
     }
 }

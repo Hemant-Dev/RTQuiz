@@ -34,7 +34,7 @@ namespace RTQuiz.API.Hubs
         {
             var connectedUsers = _connection.Values
                 .Where(r => r.RoomId == roomId)
-                .Select(r => r.User.Username).ToList();
+                .Select(r => r.UserId).ToList();
             await Clients.Group(Context.ConnectionId).ReceiveConnectedUsers(connectedUsers, roomId);
         }
         public async Task CreateRoom(CreateUserRoomDTO createUserRoomDTO)
