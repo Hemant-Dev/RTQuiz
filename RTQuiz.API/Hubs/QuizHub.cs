@@ -30,12 +30,12 @@ namespace RTQuiz.API.Hubs
         {
             await Clients.All.ReceiveMessage(message);
         }
-        public async Task SendConnectedUsers(string roomCode)
+        public async Task SendConnectedUsers(int roomId)
         {
             var connectedUsers = _connection.Values
-                .Where(u => u.Room.Code == roomCode)
-                .Select(u => u.User.Username);
-            await Clients.Group(Context.ConnectionId).ReceiveConnectedUsers(connectedUsers, roomCode);
+                .Where(r => r.RoomId == roomId)
+                .Select(r => r.User.Username).ToList();
+            await Clients.Group(Context.ConnectionId).ReceiveConnectedUsers(connectedUsers, roomId);
         }
         public async Task CreateRoom(CreateUserRoomDTO createUserRoomDTO)
         {
@@ -47,13 +47,13 @@ namespace RTQuiz.API.Hubs
                 UserId = userRoom.HostUserId,
                 RoomId = userRoom.Id
             };
-            _connection[userRoom.Code] = userRoomSavedToDictionary;
+
 
             var room = new GetRoomDTO(userRoom.Id, userRoom.Code, userRoom.Name, userRoom.HostUserId, userRoom.ActiveQuizId, userRoom.CreatedAt, userRoom.Participants);
 
             await Clients.Group(userRoom.Code)
                 .CreateRoom(room);
-            await SendConnectedUsers(userRoom.Code);
+            //await SendConnectedUsers(userRoom.Id);
         }
 
         public async Task JoinRoom(GetRoomDTO roomDTO, int userId)
@@ -65,11 +65,11 @@ namespace RTQuiz.API.Hubs
                 UserId = userId,
                 RoomId = userRoom.Id
             };
-            _connection[userRoom.Code] = userRoomSavedToDictionary;
+            _connection[Context.ConnectionId] = userRoomSavedToDictionary;
 
             await Clients.Group(userRoom.Code)
                 .JoinRoom(userRoomSavedToDictionary);
-            await SendConnectedUsers(userRoom.Code);
+            await SendConnectedUsers(userRoom.Id);
         }
 
         public async Task LeaveRoom(string roomCode, int userId)
@@ -77,13 +77,11 @@ namespace RTQuiz.API.Hubs
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomCode);
             //_connection.Remove(Context.ConnectionId);
             await Clients.Group(roomCode).LeaveRoom(userId, roomCode);
-
         }
 
         public async Task StartQuiz(GetQuizDTO getQuizDTO, string roomCode)
         {
             await Clients.Group(roomCode).StartQuiz(getQuizDTO.Id, roomCode);
-
         }
 
         public async Task EndQuiz(GetQuizDTO getQuizDTO, string roomCode)
