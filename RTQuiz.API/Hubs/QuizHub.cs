@@ -53,6 +53,7 @@ namespace RTQuiz.API.Hubs
 
             await Clients.Group(userRoom.Code)
                 .CreateRoom(room);
+            await SendConnectedUsers(userRoom.Code);
         }
 
         public async Task JoinRoom(GetRoomDTO roomDTO, int userId)
@@ -68,6 +69,7 @@ namespace RTQuiz.API.Hubs
 
             await Clients.Group(userRoom.Code)
                 .JoinRoom(userRoomSavedToDictionary);
+            await SendConnectedUsers(userRoom.Code);
         }
 
         public async Task LeaveRoom(string roomCode, int userId)
